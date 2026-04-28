@@ -1,9 +1,15 @@
 from .dtos import ActivityDto, ActivityListDto
+from app.domain.predict import ScorePredicter
 
 class IntesityScorePredicter:
+  def __init__(self, score_predicter=ScorePredicter):
+    self.score_predicter = score_predicter()
+    
   def predict_score(self, activity: ActivityDto):
-    # Здесь будет модель
-    return 5
+    score = self.score_predicter.predict_one(
+      activity.model_dump(exclude={"intensity_score", "target"})
+    )
+    return score
 
 class CogganZoneLabeler:
   def __init__(self):
