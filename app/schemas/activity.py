@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import List
 
 class ActivityRequest(BaseModel):
   type: str = Field(
@@ -7,7 +8,7 @@ class ActivityRequest(BaseModel):
   )
   distance: float = Field(
     default=...,
-    description="Пройденное расстояние"
+    description="Пройденное расстояние",
   )
   moving_time: float = Field(
     default=...,
@@ -27,4 +28,17 @@ class ActivityRequest(BaseModel):
   )
   
 class ActivityResponse(ActivityRequest):
-  pass
+  intensity_score: float = Field(
+    default=...,
+    description="Оценка интенсивности",
+  )
+  target: int = Field(
+    default=...,
+    description="Зона мощности",
+  )
+  
+class ActivityListRequest(BaseModel):
+  content: List[ActivityRequest]
+  
+class ActivityListResponse(BaseModel):
+  content: List[ActivityResponse]
