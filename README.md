@@ -32,7 +32,7 @@ http://localhost:8080/docs/swagger/
 
 ```
 curl -X 'POST' \
-  'http://127.0.0.1:8080/api/v1/' \
+  'http://127.0.0.1:8080/api/v1/predict-type' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{

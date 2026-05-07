@@ -3,7 +3,7 @@ from app.schemas.activity import ActivityListRequest, ActivityListResponse, Acti
 from app.use_cases.activity import TargetCalculater
 from . import bp
 
-@bp.post("/", summary="Получить тип тренировки",
+@bp.post("/predict-type", summary="Получить тип тренировки",
         responses={HTTPStatus.OK: ActivityListResponse})
 def calculate_intensity_score_and_target(body: ActivityListRequest):
   activity_list_with_calculated_target = TargetCalculater().calculate(body.content)
