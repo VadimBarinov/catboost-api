@@ -1,0 +1,30 @@
+@startuml
+
+title Взаимодействие компонентов системы
+
+actor "Клиент" as Client
+participant "API Endpoint" as API
+participant "TargetCalculater UseCase" as TargetCalculater
+participant "IntesityScorePredicter UseCase" as IntesityScorePredicter
+participant "CogganZoneLabeler UseCase" as CogganZoneLabeler
+participant "ScorePredicter Domain" as ScorePredicter
+participant "ModelLoader Domain" as ModelLoader
+
+Client -> API : POST /predict-type { activity_list }
+API -> TargetCalculater ++ #SkyBlue : calculate(activity_list)
+
+TargetCalculater -> IntesityScorePredicter ++ #SkyBlue : Для каждой тренировки \npredict_score(activity)
+IntesityScorePredicter -> ScorePredicter ++ #SkyBlue : predict_one(activity)
+ScorePredicter -> ModelLoader ++ #SkyBlue : predict(activity)
+
+ScorePredicter <-- ModelLoader -- : Показатель интенсивности \npred
+IntesityScorePredicter <-- ScorePredicter --
+TargetCalculater <-- IntesityScorePredicter --
+
+TargetCalculater -> CogganZoneLabeler ++ #SkyBlue : Для каждой тренировки \nassign_zone(pred)
+TargetCalculater <-- CogganZoneLabeler -- : Тип мощности
+
+API <-- TargetCalculater -- : Тренировки с типами мощности \nactivity_list_dto
+Client <-- API
+
+@enduml
