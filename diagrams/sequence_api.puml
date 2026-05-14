@@ -3,7 +3,7 @@
 title Взаимодействие компонентов системы
 
 actor "Клиент" as Client
-participant "API Endpoint" as API
+participant "API" as API
 participant "TargetCalculater UseCase" as TargetCalculater
 participant "IntesityScorePredicter UseCase" as IntesityScorePredicter
 participant "CogganZoneLabeler UseCase" as CogganZoneLabeler
