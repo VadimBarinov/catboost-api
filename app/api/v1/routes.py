@@ -10,6 +10,7 @@ def calculate_intensity_score_and_target(body: ActivityListRequest):
   response = ActivityListResponse(
     content=[
       ActivityResponse(
+        id=a.id,
         type=a.type,
         distance=a.distance,
         moving_time=a.moving_time, 

@@ -2,6 +2,10 @@ from pydantic import BaseModel, Field
 from typing import List
 
 class ActivityRequest(BaseModel):
+  id: int = Field(
+    default=...,
+    description="ID тренировки",
+  )
   type: str = Field(
     default=...,
     description="Тип тренировки (Ride/Run)",

@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List
 
 class ActivityDto(BaseModel):
+  id: int
   type: str
   distance: float
   moving_time: float 

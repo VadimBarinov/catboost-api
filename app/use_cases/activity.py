@@ -7,7 +7,7 @@ class IntesityScorePredicter:
     
   def predict_score(self, activity: ActivityDto):
     score = self.score_predicter.predict_one(
-      activity.model_dump(exclude={"intensity_score", "target"})
+      activity.model_dump(exclude={"id", "intensity_score", "target"})
     )
     return score
 
@@ -38,6 +38,7 @@ class TargetCalculater:
     activity_list_dto = ActivityListDto(
       content=[
         ActivityDto(
+          id=a.id,
           type=a.type,
           distance=a.distance,
           moving_time=a.moving_time, 
