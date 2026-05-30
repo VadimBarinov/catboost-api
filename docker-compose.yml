@@ -1,5 +1,5 @@
 services:
-  app:
+  predictor:
     build:
       context: .
       args:
@@ -12,3 +12,10 @@ services:
       - .:/app
     stdin_open: true
     tty: true
+    networks:
+      - app-shared-network
+
+networks:
+  app-shared-network:
+    driver: bridge
+    name: app-shared-network
