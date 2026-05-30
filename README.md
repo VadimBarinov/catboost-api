@@ -1,10 +1,11 @@
-# API для категоризации тренировок 
+# API для категоризации тренировок
 
 Система классификации типов тренировок на основе данных о физической активности
 
 ---
 
 #### Для запуска необходимо выполнить команду:
+
 ```
 docker compose up --build
 ```
@@ -16,6 +17,7 @@ http://localhost:8080/api/v1/
 ```
 
 #### Интерактивная документация доступна по адресу:
+
 ```
 http://localhost:8080/docs/swagger/
 ```
@@ -25,6 +27,7 @@ http://localhost:8080/docs/swagger/
 ### Описание эндпоинтов
 
 Подсчет оценки интенсивности и типа переданных тренировок:
+
 - На вход подается список тренировок в формате json
 - На выходе список переданных тренировок с подсчитанными интенсивность и типом
 
@@ -38,6 +41,7 @@ curl -X 'POST' \
   -d '{
   "content": [
     {
+      "id": "0",
       "average_heartrate": 130.0,
       "average_speed": 9.0,
       "distance": 35000.0,
@@ -46,6 +50,7 @@ curl -X 'POST' \
       "type": "Ride"
     },
     {
+      "id": "1",
       "average_heartrate": 190.0,
       "average_speed": 5,
       "distance": 200,
@@ -63,6 +68,7 @@ curl -X 'POST' \
 {
   "content": [
     {
+      "id": "0",
       "average_heartrate": 130,
       "average_speed": 9,
       "distance": 35000,
@@ -73,6 +79,7 @@ curl -X 'POST' \
       "type": "Ride"
     },
     {
+      "id": "1",
       "average_heartrate": 190,
       "average_speed": 5,
       "distance": 200,
